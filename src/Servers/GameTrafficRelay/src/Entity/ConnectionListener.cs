@@ -93,7 +93,7 @@ namespace UniSpy.Server.GameTrafficRelay.Aggregate
                 return;
             }
             LogWriter.LogDebug($"[{ListeningEndPoint}] => [{GameSpyClientIPEndPoint}]  {StringExtensions.ConvertPrintableBytesToString(data)} [{StringExtensions.ConvertByteToHexString(data)}]");
-            SendAsync(GameSpyClientIPEndPoint, data);
+            Send(GameSpyClientIPEndPoint, data);
         }
 
         void IConnectionListener.Dispose()
