@@ -104,6 +104,10 @@ namespace UniSpy.Server.NatNegotiation.Aggregate.Redis
 
         public NatInitInfo(List<NatAddressInfo> infos)
         {
+            if (infos.Count == 0)
+            {
+                throw new NatNegotiation.Exception("Missing NatAddressInfo");
+            }
             AddressInfos = infos.Select((i) => new { i }).ToDictionary(a => ((NatPortType)a.i.PortType), a => a.i);
             if (infos.First().Version == 2)
             {
